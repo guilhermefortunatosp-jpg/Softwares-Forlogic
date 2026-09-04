@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Carrossel CSS</title>
+
+    <style>
+
+        :root {
+          --cor-principal: repeating-linear-gradient(#0A6BFA, #0048FF, #4298FF);
+          --cor-descricao: linear-gradient(#0020CF, #1237CC);            
+          --cor-secundaria: #a52a4a;
+            --cor-clara: #C9E3FF;
+            --cor-escura: #001321;
+            --cor-branca: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--cor-clara);
+            color: var(--cor-escura);
+        }
+
+        header {
+            background-image: var(--cor-principal);
+            color: var(--cor-branca);
+            text-align: center;
+            padding: 30px;
+        }
+
+        main {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+
+        /* ESCONDE OS BOTÕES DE RADIO */
+
+        input[type="radio"] {
+            display: none;
+        }
+
+
+        /* ÁREA VISÍVEL DO CARROSSEL */
+
+        .carrossel {
+            overflow: hidden;
+
+            border: 5px solid var(--cor-principal);
+            border-radius: 15px;
+            
+        }
+
+
+        /* CONJUNTO DOS SLIDES */
+
+        .slides {
+            display: flex;
+
+            width: 500%;
+
+            transition: transform 0.5s ease;
+
+        }
+
+
+        /* CADA SLIDE */
+        .slide {
+           width: 20%;
+            flex-shrink: 0;
+            border: 6px solid transparent; 
+           border-image: linear-gradient(#1237CC, #45BF04, #5981BA, #0D405C) 1;
+        }
+
+
+        .slide img {
+            width: 100%;
+            height: 450px;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        .slide figcaption {
+            background-image: var(--cor-descricao);
+            color: white;
+
+            text-align: center;
+
+            padding: 15px;
+            
+        }
+
+
+        /* MOVIMENTAÇÃO DOS SLIDES */
+
+        #slide1:checked ~ .carrossel .slides {
+            transform: translateX(0);
+        }
+
+        #slide2:checked ~ .carrossel .slides {
+            transform: translateX(-20%);
+        }
+
+        #slide3:checked ~ .carrossel .slides {
+            transform: translateX(-40%);
+        }
+
+        #slide4:checked ~ .carrossel .slides {
+            transform: translateX(-60%);
+        }
+
+        #slide5:checked ~ .carrossel .slides {
+            transform: translateX(-80%);
+        }
+
+
+        /* BOTÕES */
+
+        .botoes {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+
+        .botoes label {
+            width: 20px;
+            height: 20px;
+
+            background-image: var(--cor-descricao);
+
+            border-radius: 50%;
+
+            cursor: pointer;
+
+            transition: transform 0.5s ease-in-out;
+        }
+
+
+        .botoes label:hover {
+            background-color: var(--cor-escura);
+            transition: 0.5s;
+            transform: scale(1.2)
+        }
+
+
+        footer {
+            background-color: var(--cor-escura);
+            color: white;
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 40px;
+        }
+
+
+        /* CELULAR */
+
+        @media (max-width: 700px) {
+
+            .slide img {
+                height: 280px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <header>
+
+        <h1>Softwares Forlogic</h1>
+
+        <p>Carrossel feito apenas com HTML e CSS</p>
+
+    </header>
+
+
+    <main>
+
+        <h2>Conheça nossos softwares</h2>
+
+
+        <!-- BOTÕES INVISÍVEIS -->
+
+        <input type="radio" name="carrossel" id="slide1" checked>
+
+        <input type="radio" name="carrossel" id="slide2">
+
+        <input type="radio" name="carrossel" id="slide3">
+
+        <input type="radio" name="carrossel" id="slide4">
+
+
+
+        <!-- CARROSSEL -->
+
+        <section class="carrossel">
+
+            <div class="slides">
+
+
+                <figure class="slide">
+
+                    <img
+                        src="https://qualiex.com/wp-content/uploads/2024/05/LOGO.png"
+                        alt="Qualiex"
+                    >
+
+                    <figcaption>
+Centralize todos os processos da qualidade em uma única solução. Ganhe velocidade e precisão com recursos que conectam o planejamento à execução, dados em tempo real e visibilidade total para decisões seguras.   <br>       <br>                    </figcaption>
+
+                </figure>
+
+
+                <figure class="slide">
+
+                    <img
+                        src="https://metroex.com.br/wp-content/uploads/2024/05/LOGO.png"
+                        alt="Montanhas"
+                    >
+
+                    <figcaption>
+O Metroex é a plataforma ideal de metrologia, calibração e ensaios, desenvolvida para o controle de instrumentos na indústria e a automação de processos em laboratórios.             <br>    <br>        </figcaption>
+
+                </figure>
+
+
+                <figure class="slide">
+
+                    <img
+                        src="https://45200488.fs1.hubspotusercontent-na1.net/hubfs/45200488/Identidade%20Visual/SABER%20GEST%C3%83O%20LOGO%20PRETA%20SEM%20BG.png"
+                        alt="Paisagem natural"
+                    >
+
+                    <figcaption>
+Este é o nosso propósito, e é ele que nos move a criar sistemas de aprendizagem que transformam conhecimento em resultado, impulsionando pessoas, empresas e a verdadeira cultura da qualidade.     <br>    <br>                     </figcaption>
+
+                </figure>
+
+
+                <figure class="slide">
+
+                    <img
+                        src="https://qualitfy.com.br/wp-content/uploads/2024/05/QUALITFY.png"
+                        alt="Montanhas e rio"
+                    >
+
+                    <figcaption>
+   <br>    A 1ª Inteligência Artificial da Qualidade, totalmente focada em te ajudar a gerar mais valor para sua empresa.                 <br>     <br>      </figcaption>
+
+                </figure>
+                </figure>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTÕES VISÍVEIS -->
+
+        <div class="botoes">
+
+            <label for="slide1"></label>
+
+            <label for="slide2"></label>
+
+            <label for="slide3"></label>
+
+            <label for="slide4"></label>
+
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>Desenvolvido para estudo de HTML e CSS</p>
+
+    </footer>
+
+</body>
+
+</html>
+
